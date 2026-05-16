@@ -1,0 +1,12 @@
+---
+interface Props {
+  nombre: string;
+}
+
+const { nombre } = Astro.props;
+---
+
+<span
+  class="inline-block bg-accent-blue/20 border border-accent-blue text-accent-blue font-medium px-2 text-xs lg:text-sm lg:px-4 rounded-2xl"
+  >{nombre}</span
+>

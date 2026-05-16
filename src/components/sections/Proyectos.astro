@@ -1,0 +1,92 @@
+---
+import ProyectoCard from "../ProyectoCard.astro";
+import SwipeUp from "../SwipeUp.astro";
+const proyectos = [
+  {
+    url: "https://github.com/albxrtx/factuscan-backend",
+    demo: "https://factuscan-demo.onrender.com/",
+    portada: "src/assets/proyecto2.webp",
+    nombre: "FactuScan",
+    descripcion:
+      "Aplicación full-stack que permite analizar facturas en PDF extrayendo automáticamente los datos mediante Python y pdfplumber. El sistema clasifica los gastos utilizando Machine Learning con scikit-learn y mostrarlos en gráficos",
+    etiquetas: ["Python", "FastAPI", "Scikit-learn", "Tailwind", "React"],
+  },
+  {
+    url: "https://github.com/albxrtx/concurrent-seat-booking",
+    portada: "src/assets/proyecto1.png",
+    nombre: "Reserva de Asientos",
+    descripcion:
+      "Aplicación full-stack diseñada para simular un sistema real de reserva de asientos, poniendo el foco en evitar múltiples reservas sobre un mismo asiento. Además de actualizaciones en tiempo real mediante WebSockets.",
+    etiquetas: ["Java", "SpringBoot", "TypeScript", "React", "WebSocket"],
+  },
+];
+---
+
+<section
+  id="proyectos"
+  class="relative snap-start bg-primary-bg flex flex-col gap-3 w-full h-screen items-center justify-center"
+>
+  <div class="lg:w-[20%] flex justify-center items-center gap-3">
+    <div class="border w-10 border-primary-border"></div>
+    <span class="text-accent-blue font-semibold w-fit">MIS PROYECTOS</span>
+    <div class="border w-10 border-primary-border"></div>
+  </div>
+  <p class="lg:w-[40%] w-[80%] text-sm lg:text-base text-center text-gray-600">
+    Aquí puedes ver algunos de los proyectos en los que he trabajado durante mi
+    formación y experiencia laboral.
+  </p>
+  <div class="flex flex-col justify-around items-center lg:h-[55%]">
+    <div class="relative h-100 max-w-75 lg:max-w-[40%] overflow-hidden">
+      <div
+        id="slider-track"
+        class="flex transition-transform duration-300 ease-in-out h-full"
+      >
+        {
+          proyectos.map((proyecto) => (
+            <div class="min-w-75  p-2 shrink-0 lg:w-full">
+              <ProyectoCard
+                url={proyecto.url}
+                demo={proyecto.demo}
+                portada={proyecto.portada}
+                nombre={proyecto.nombre}
+                descripcion={proyecto.descripcion}
+                etiquetas={proyecto.etiquetas}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+    <div class="flex">
+      <button
+        class="hover:scale-150 flex items-center justify-center"
+        data-index="0"
+      >
+        <svg class="lg:size-12 size-10 fill-accent-blue">
+          <use xlink:href={`#dot`}></use>
+        </svg>
+      </button>
+      <button
+        class="hover:scale-150 flex items-center justify-center"
+        data-index="1"
+      >
+        <svg class="lg:size-12 size-10 fill-accent-blue">
+          <use xlink:href={`#dot`}></use>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <SwipeUp />
+</section>
+<script type="module">
+  const track = document.getElementById("slider-track");
+  const buttons = document.querySelectorAll("[data-index]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const index = Number(btn.dataset.index);
+      track.style.transform = `translateX(-${index * 100}%)`;
+    });
+  });
+</script>

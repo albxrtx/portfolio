@@ -1,0 +1,86 @@
+---
+import SkillCard from "../SkillCard.astro";
+const skills = [
+  {
+    nombre: "Java",
+    icono: "java",
+  },
+  {
+    nombre: "Spring",
+    icono: "spring",
+  },
+  {
+    nombre: "Python",
+    icono: "python",
+  },
+  {
+    nombre: "FastAPI",
+    icono: "fastapi",
+  },
+  {
+    nombre: "Flask",
+    icono: "flask",
+  },
+  {
+    nombre: "JavaScript",
+    icono: "javascript",
+  },
+  {
+    nombre: "TypeScript",
+    icono: "typescript",
+  },
+  {
+    nombre: "React",
+    icono: "react",
+  },
+  {
+    nombre: "Astro",
+    icono: "astro",
+  },
+  {
+    nombre: "Tailwind",
+    icono: "tailwind",
+  },
+  {
+    nombre: "HTML",
+    icono: "html",
+  },
+  {
+    nombre: "CSS",
+    icono: "css",
+  },
+  {
+    nombre: "mySQL",
+    icono: "mysql",
+  },
+  {
+    nombre: "Git",
+    icono: "git",
+  },
+];
+---
+
+<section
+  id="skills"
+  class="relative snap-start bg-primary-bg flex flex-col gap-6 w-full h-full items-center justify-center"
+>
+  <div class="lg:w-[20%] flex justify-center items-center gap-3">
+    <div class="border w-10 border-primary-border"></div>
+    <span class="text-accent-blue font-semibold w-fit">STACK TECNOLÓGICO</span>
+    <div class="border w-10 border-primary-border"></div>
+  </div>
+  <p class="lg:w-[40%] w-[80%] text-sm lg:text-base text-center text-gray-600">
+    Estos son algunos de los lenguajes, frameworks y herramientas con los que
+    tengo experiencia y que utilizo para desarrollar mis proyectos.
+  </p>
+
+  <div
+    class="w-[90%] sm:w-[75%] md:w-[70%] lg:w-[65%] flex flex-wrap items-center justify-center gap-4"
+  >
+    {
+      skills.map((skill) => (
+        <SkillCard nombre={skill.nombre} icono={skill.icono} />
+      ))
+    }
+  </div>
+</section>

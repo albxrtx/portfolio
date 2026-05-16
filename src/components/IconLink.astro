@@ -1,0 +1,30 @@
+---
+import sprite from "../assets/icons.svg?raw";
+
+interface Props {
+  href: string;
+  icon: string;
+  ariaLabel?: string;
+}
+
+const { href, icon, ariaLabel } = Astro.props;
+---
+
+<fragment set:html={sprite} />
+
+<a
+  {href}
+  aria-label={ariaLabel}
+  class="icon-link inline-flex items-center gap-2 transition-opacity
+  border border-accent-blue bg-accent-blue rounded-3xl px-4 py-2 text-white w-fit fill-white shadow-lg shadow-accent-blue/50
+  hover:bg-accent-blue-hover hover:border-accent-blue-hover"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <svg class="size-5">
+    <use xlink:href={`#${icon}`}></use>
+  </svg>
+  <slot />
+</a>
+
+<style></style>

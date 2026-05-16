@@ -1,0 +1,88 @@
+<form
+  id="formulario-contacto"
+  action=""
+  class="z-100 hidden bg-primary-bg p-6 lg:p-10 lg:gap-3 lg:w-[50%] border border-primary-border rounded-2xl absolute top-36 right-[50%] translate-x-1/2 flex flex-col gap-2"
+>
+  <h3 class="text-primary-text">Contáctame</h3>
+  <input
+    class="border border-primary-border px-4 py-2 rounded-2xl text-primary-text"
+    type="email"
+    name="email"
+    placeholder="correo@electronico.com"
+    required
+  />
+  <input
+    class="border border-primary-border px-4 py-2 rounded-2xl text-primary-text"
+    type="text"
+    name="subject"
+    placeholder="Asunto del mensaje"
+    required
+  />
+  <textarea
+    class="border border-primary-border px-4 py-2 rounded-2xl text-primary-text"
+    name="message"
+    placeholder="Escribe tu mensaje aquí..."
+    required></textarea>
+
+  <div class="w-full flex justify-center items-center gap-3">
+    <div class="border w-full border-primary-border"></div>
+    <span class="text-primary-text">o</span>
+    <div class="border w-full border-primary-border"></div>
+  </div>
+  <p class="text-primary-text">
+    Escribeme a: <span class="font-semibold"
+      >albertomariannechita@gmail.com</span
+    >
+  </p>
+  <span id="estado-formulario" class="hidden p-2 rounded-2xl text-center border"
+  ></span>
+  <div class="flex gap-2">
+    <button
+      class="transition-opacity bg-accent-blue hover:bg-accent-blue-hover text-white
+              border border-accent-blue rounded-3xl px-4 py-2 w-fit fill-white shadow-md shadow-accent-blue/50
+              hover:bg-hover-bg hover:border-accent-blue-hover"
+      type="submit">Enviar</button
+    >
+    <button
+      onclick="document.getElementById('formulario-contacto').classList.add('hidden')"
+      class="transition-opacity
+              border border-primary-border rounded-3xl px-4 py-2 w-fit
+              hover:bg-primary-bg-hover hover:border-primary-border-hover text-primary-text"
+      type="reset">Cerrar</button
+    >
+  </div>
+</form>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"
+></script>
+
+<script type="module">
+  emailjs.init("qcoo6JbE0-bBvKUwM");
+
+  const form = document.getElementById("formulario-contacto");
+  const estadoFormulario = document.getElementById("estado-formulario");
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    emailjs.sendForm("service_5mzmree", "template_8wqaii5", this).then(
+      () => {
+        estadoFormulario.classList.remove("hidden");
+        estadoFormulario.textContent = "Mensaje enviado con éxito ";
+        estadoFormulario.classList.add(
+          "bg-green-100/70",
+          "text-green-700",
+          "border-green-500",
+        );
+        form.reset();
+      },
+      (error) => {
+        estadoFormulario.classList.remove("hidden");
+        estadoFormulario.textContent = "Error al enviar el mensaje ";
+        estadoFormulario.classList.add(
+          "bg-red-100/70",
+          "text-red-700",
+          "border-red-500",
+        );
+      },
+    );
+  });
+</script>

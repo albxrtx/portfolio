@@ -1,0 +1,55 @@
+---
+import IconLink from "../IconLink.astro";
+import Etiqueta from "../Etiqueta.astro";
+import SwipeUp from "../SwipeUp.astro";
+---
+
+<section
+  id="about-me"
+  class="snap-start bg-primary-bg flex flex-col gap-3 w-full h-full items-center justify-center"
+>
+  <Etiqueta nombre="💼 Disponible para trabajar" />
+  <h1
+    class="text-5xl lg:text-7xl flex flex-col lg:flex-row gap-2 lg:gap-4 font-semibold text-primary-text"
+  >
+    <span>Alberto</span>
+    <span>Marian</span>
+  </h1>
+  <h3 class="text-2xl font-medium text-gray-400">Desarrollador Full-Stack</h3>
+  <h4 class="lg:w-[40%] w-[80%] text-center text-pretty text-gray-600">
+    Graduado en Desarrollo de Aplicaciones Multiplataforma (DAM) con especial
+    interés en el backend y desarrollo de aplicaciones web.
+    <br />
+    Busco incorporarme a un equipo técnico donde pueda aportar soluciones limpias,
+    aprender de desarrolladores experimentados y seguir creciendo profesionalmente.
+  </h4>
+  <div class="flex flex-col lg:flex-row gap-4 items-center justify-center">
+    <div class="flex gap-2 items-center justify-center">
+      <IconLink
+        href="https://www.linkedin.com/in/alberto-marian-nechita/"
+        icon="linkedin"
+        ariaLabel="LinkedIn Profile"
+      >
+        LinkedIn
+      </IconLink>
+      <IconLink
+        href="https://github.com/albxrtx"
+        icon="github"
+        ariaLabel="GitHub Profile"
+      >
+        GitHub
+      </IconLink>
+    </div>
+    <a
+      href=""
+      class="flex text-primary-text items-center gap-2 border border-primary-border rounded-3xl px-4 py-2 shadow-md shadow-primary-shadow
+      hover:bg-primary-bg-hover"
+    >
+      <svg class="size-5 fill-primary-text">
+        <use xlink:href={`#cv`}></use>
+      </svg>
+      Descargar CV</a
+    >
+  </div>
+  <SwipeUp />
+</section>

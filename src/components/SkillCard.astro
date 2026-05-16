@@ -1,0 +1,19 @@
+---
+import Etiqueta from "./Etiqueta.astro";
+
+interface Props {
+  nombre: string;
+  icono: string;
+}
+
+const { nombre, icono } = Astro.props;
+---
+
+<div
+  class="bg-primary-bg flex flex-col items-center justify-center gap-2 px-2 sm:px-4 py-1 sm:py-2 rounded-md"
+>
+  <svg class="size-10 sm:size-16 lg:size-20 flex fill-primary-text">
+    <use xlink:href={`#${icono}`}></use>
+  </svg>
+  <Etiqueta nombre={nombre} />
+</div>
